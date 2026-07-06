@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "src",
+    "next.config.ts",
+    "postcss.config.mjs",
+    "tsconfig.json",
+    ".env",
+    ".env.local"
+  ],
+  "ext": "ts,tsx,js,jsx,css,json,mjs",
+  "ignore": [".next", "node_modules"],
+  "exec": "next dev -p 3000"
+}
