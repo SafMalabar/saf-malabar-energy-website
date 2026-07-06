@@ -13,7 +13,7 @@ export const company = {
 /** Hero section stats */
 export const heroStats = [
   { value: "500+", label: "Installations" },
-  { value: "10+", label: "Years Experience" },
+  { value: "5+", label: "Years Experience" },
   { value: "98%", label: "Client Satisfaction" },
 ] as const;
 

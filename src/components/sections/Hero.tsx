@@ -34,13 +34,15 @@ export function Hero() {
           >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-white/60 px-4 py-1.5 text-sm font-medium text-secondary backdrop-blur-sm">
               <Leaf size={14} />
-              Go Solar, Go Green
+              Power Your Home, Lower Your Bills
             </div>
 
             <h1 className="text-4xl font-bold leading-[1.15] text-dark sm:text-5xl lg:text-[3.5rem]">
-              Powering a{" "}
-              <span className="text-primary">Brighter,</span>{" "}
-              <span className="text-secondary">Greener</span> Tomorrow
+               Clean  {" "}
+              <span className="text-primary">Energy,</span>{" "}
+              <span className="text-secondary">Lower</span> Bills,
+              <span className="text-secondary">Brighter</span> Future
+
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-relaxed text-dark/70 sm:text-lg">
@@ -67,12 +69,7 @@ export function Hero() {
             animate="visible"
             transition={{ delay: 0.5 }}
           >
-            {heroStats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                <p className="text-xs font-medium text-dark/50">{stat.label}</p>
-              </div>
-            ))}
+            
           </motion.div>
         </div>
 
@@ -90,7 +87,7 @@ export function Hero() {
 
             <Image
               src={images.hero.solar}
-              alt="Solar panel installation at sunset"
+              alt="Solar technician inspecting solar panels at sunset"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -98,11 +95,7 @@ export function Hero() {
             />
 
             {/* Glass badge */}
-            <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/30 bg-white/20 p-4 backdrop-blur-md">
-              <p className="text-sm font-semibold text-white drop-shadow-sm">
-                {company.tagline}
-              </p>
-            </div>
+           
           </div>
         </motion.div>
       </div>
