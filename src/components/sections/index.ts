@@ -1,8 +1,13 @@
 export { Hero } from "./Hero";
+export { Trust } from "./Trust";
 export { About } from "./About";
 export { Services } from "./Services";
+export { Projects } from "./Projects";
 export { WhyChooseUs } from "./WhyChooseUs";
 export { Benefits } from "./Benefits";
 export { Process } from "./Process";
+export { Products } from "./Products";
+export { FAQ } from "./FAQ";
+export { Testimonials } from "./Testimonials";
 export { CTA } from "./CTA";
 export { Contact } from "./Contact";

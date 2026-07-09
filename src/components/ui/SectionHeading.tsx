@@ -21,8 +21,8 @@ export function SectionHeading({
   const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
 
   return (
-    <motion.div
-      className={`mb-14 max-w-2xl ${alignClass}`}
+    <motion.header
+      className={`mb-16 max-w-3xl ${alignClass}`}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -30,15 +30,19 @@ export function SectionHeading({
     >
       {label && (
         <span
-          className={`mb-3 inline-block text-sm font-semibold uppercase tracking-[0.2em] ${
-            light ? "text-gold" : "text-secondary"
+          className={`mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] ${
+            light ? "text-secondary-light" : "text-secondary"
           }`}
         >
+          <span className="h-px w-6 bg-current opacity-60" aria-hidden="true" />
           {label}
+          {align === "center" && (
+            <span className="h-px w-6 bg-current opacity-60" aria-hidden="true" />
+          )}
         </span>
       )}
       <h2
-        className={`text-3xl font-bold leading-tight sm:text-4xl lg:text-[2.75rem] ${
+        className={`text-balance text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.75rem] ${
           light ? "text-white" : "text-dark"
         }`}
       >
@@ -46,18 +50,13 @@ export function SectionHeading({
       </h2>
       {description && (
         <p
-          className={`mt-4 text-base leading-relaxed sm:text-lg ${
-            light ? "text-white/80" : "text-dark/70"
-          }`}
+          className={`prose-narrow mt-5 text-base leading-[1.75] sm:text-lg ${
+            align === "center" ? "mx-auto" : ""
+          } ${light ? "text-white/80" : "text-muted"}`}
         >
           {description}
         </p>
       )}
-      <div
-        className={`mt-5 h-1 w-16 rounded-full bg-gold ${
-          align === "center" ? "mx-auto" : ""
-        }`}
-      />
-    </motion.div>
+    </motion.header>
   );
 }

@@ -1,7 +1,13 @@
-export { company, heroStats, aboutIntro } from "./company";
-export { navLinks, footerLinks } from "./navigation";
+export { company, heroStats, aboutIntro, aboutStory } from "./company";
+export { navLinks, footerLinks, sectionIds } from "./navigation";
 export { aboutFeatures } from "./about";
 export { services } from "./services";
 export { whyChooseUs } from "./why-us";
 export { benefits } from "./benefits";
 export { processSteps } from "./process";
+export { trustMetrics } from "./trust";
+export { projects, projectCategories, type Project, type ProjectCategory } from "./projects";
+export { products } from "./products";
+export { faqs } from "./faq";
+export { testimonials } from "./testimonials";
+export { contactForm } from "./contact";

@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  IN_PROGRESS
+  QUOTED
+  CONVERTED
+  CLOSED
+}
+
+model Enquiry {
+  id           String        @id @default(cuid())
+  name         String
+  phone        String
+  email        String?
+  location     String
+  propertyType String?
+  billRange    String?
+  service      String?
+  message      String?
+  billFileName String?
+  status       EnquiryStatus @default(NEW)
+  notes        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  location  String
+  project   String
+  review    String
+  rating    Int      @default(5)
+  initials  String
+  published Boolean  @default(false)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  title         String
+  category      String
+  location      String
+  capacity      String
+  completedDate String
+  savings       String
+  story         String
+  image         String
+  published     Boolean  @default(true)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Faq {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  benefits    String
+  idealFor    String
+  icon        String   @default("Sun")
+  published   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CompanySettings {
+  id                    String   @id @default("default")
+  name                  String
+  tagline               String
+  description           String
+  url                   String
+  email                 String
+  phones                String
+  whatsapp              String
+  location              String
+  serviceAreas          String
+  workingHoursWeekdays  String
+  workingHoursEmergency String
+  socialFacebook        String?
+  socialInstagram       String?
+  socialLinkedin        String?
+  founded               Int      @default(2019)
+  updatedAt             DateTime @updatedAt
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String?
+  details   String?
+  createdAt DateTime @default(now())
+}

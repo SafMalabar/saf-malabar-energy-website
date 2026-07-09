@@ -8,6 +8,9 @@ export const images = {
     logo: "/assets/brand/logo.png",
   },
   hero: {
-    solar: "/assets/hero/hero.jpeg",
+    solar: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=80",
+  },
+  about: {
+    team: "https://images.unsplash.com/photo-1558449028-b53aee39cff7?w=800&q=80",
   },
 } as const;

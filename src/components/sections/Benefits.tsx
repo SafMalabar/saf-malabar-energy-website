@@ -1,57 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { CircularProgress } from "@/components/ui/CircularProgress";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import {
-  scaleIn,
-  staggerContainer,
-  viewportOnce,
-} from "@/lib/animations";
+import { scaleIn, staggerContainer, viewportOnce } from "@/lib/animations";
 import { benefits } from "@/content";
 
 export function Benefits() {
   return (
-    <section id="benefits" className="relative overflow-hidden bg-cream py-24 lg:py-32">
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+    <section id="benefits" className="section-padding bg-warm-white" aria-labelledby="benefits-heading">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
           label="Solar Benefits"
-          title="Why Go Solar?"
-          description="Discover the powerful advantages of switching to solar energy for your home or business."
+          title="Measurable Returns on Your Investment"
+          description="Solar is not an expense—it's a long-term engineering investment with documented financial and environmental returns."
         />
 
         <motion.div
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
           {benefits.map((benefit) => (
-            <motion.div
+            <motion.article
               key={benefit.title}
               variants={scaleIn}
-              whileHover={{ y: -6 }}
-              className="group rounded-2xl border border-white bg-white/80 p-6 shadow-sm backdrop-blur-sm transition-shadow hover:shadow-xl hover:shadow-primary/10"
+              whileHover={{ y: -4 }}
+              className="card-premium flex flex-col items-center p-8 text-center"
             >
-              <span className="mb-4 block text-3xl">{benefit.icon}</span>
-              <p className="mb-1 text-3xl font-bold text-primary">
-                <AnimatedCounter
-                  value={benefit.stat}
-                  suffix={benefit.suffix}
-                  prefix={benefit.prefix}
-                />
-              </p>
-              <h3 className="mb-2 text-base font-bold text-dark">{benefit.title}</h3>
-              <p className="text-sm leading-relaxed text-dark/60">
-                {benefit.description}
-              </p>
-            </motion.div>
+              <span className="mb-4 text-3xl" role="img" aria-label={benefit.title}>
+                {benefit.icon}
+              </span>
+
+              <CircularProgress
+                value={benefit.stat}
+                maxValue={benefit.maxStat ?? 100}
+                suffix={benefit.suffix}
+                prefix={benefit.prefix}
+                label={benefit.unit}
+                size={110}
+              />
+
+              <h3 className="mt-5 text-base font-bold text-dark">{benefit.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{benefit.description}</p>
+            </motion.article>
           ))}
         </motion.div>
       </div>

@@ -1,4 +1,4 @@
-import { Leaf, Shield, Zap, type LucideIcon } from "lucide-react";
+import { Leaf, Shield, Wrench, type LucideIcon } from "lucide-react";
 
 export const aboutFeatures: {
   icon: LucideIcon;
@@ -6,21 +6,21 @@ export const aboutFeatures: {
   description: string;
 }[] = [
   {
-    icon: Leaf,
-    title: "Clean Energy",
+    icon: Wrench,
+    title: "Engineering-First Approach",
     description:
-      "Harness the power of the sun with zero-emission energy solutions that protect our planet.",
-  },
-  {
-    icon: Zap,
-    title: "Stronger Tomorrow",
-    description:
-      "Build energy independence and secure a sustainable future for generations to come.",
+      "Every system is designed from load analysis and site conditions—not selected from a generic catalogue.",
   },
   {
     icon: Shield,
-    title: "India's Pride",
+    title: "Built for Kerala's Climate",
     description:
-      "Proudly serving Kerala and contributing to India's renewable energy revolution.",
+      "Corrosion-resistant mounting, monsoon-rated cabling, and shading analysis for Malabar region conditions.",
+  },
+  {
+    icon: Leaf,
+    title: "Long-Term Partnership",
+    description:
+      "Installation is the beginning. We provide monitoring, maintenance, and support for the life of your system.",
   },
 ];

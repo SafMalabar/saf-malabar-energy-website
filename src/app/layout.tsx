@@ -2,32 +2,48 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { images } from "@/config/images";
 import { company } from "@/content";
+import { StructuredData } from "@/components/seo/StructuredData";
 import "./globals.css";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
-  title: `${company.name} | Solar Energy Solutions in Kerala`,
+  title: {
+    default: `${company.name} | Premium Solar Energy Solutions in Kerala`,
+    template: `%s | ${company.name}`,
+  },
   description: company.description,
   keywords: [
-    "solar energy",
-    "solar panels",
-    "Kerala",
-    "Malappuram",
-    "Kozhikode",
+    "solar energy Kerala",
+    "solar panel installation Malappuram",
+    "solar company Kozhikode",
+    "residential solar Kerala",
+    "commercial solar plant",
+    "industrial solar installation",
     "SAF Malabar Energy",
-    "renewable energy",
-    "solar installation",
+    "solar engineering Kerala",
+    "net metering Kerala",
+    "MNRE solar subsidy",
+    "hybrid solar system",
+    "solar maintenance Kerala",
   ],
-  authors: [{ name: company.name }],
+  authors: [{ name: company.name, url: company.url }],
+  creator: company.name,
+  publisher: company.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: `${company.name} | Solar Energy Solutions in Kerala`,
-    description: `${company.tagline}. Reliable solar energy solutions for homes, businesses, and industries across Kerala.`,
+    title: `${company.name} | Premium Solar Energy Solutions in Kerala`,
+    description: `${company.tagline}. Engineering-grade solar systems for homes, businesses, and industries across Kerala.`,
     url: company.url,
     siteName: company.name,
     locale: "en_IN",
@@ -37,20 +53,31 @@ export const metadata: Metadata = {
         url: images.brand.logo,
         width: 1200,
         height: 630,
-        alt: `${company.name} - Solar Solutions`,
+        alt: `${company.name} — Premium Solar Engineering in Kerala`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${company.name} | Solar Energy Solutions`,
-    description: `${company.tagline} with reliable solar solutions across Kerala.`,
+    title: `${company.name} | Premium Solar Energy Solutions`,
+    description: `${company.tagline}. Trusted solar engineering across Kerala.`,
     images: [images.brand.logo],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  alternates: {
+    canonical: company.url,
+  },
+  category: "Solar Energy",
 };
 
 export default function RootLayout({
@@ -60,7 +87,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} h-full scroll-smooth antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <StructuredData />
+      </head>
+      <body className="min-h-full flex flex-col bg-warm-white text-dark">
+        {children}
+      </body>
     </html>
   );
 }

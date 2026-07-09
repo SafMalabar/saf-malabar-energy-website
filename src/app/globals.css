@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fbf7;
-  --foreground: #1f2937;
-  --primary: #0b5d2a;
-  --primary-dark: #094a22;
-  --secondary: #2e8b57;
-  --gold: #d4a017;
-  --cream: #f8fbf7;
-  --dark: #1f2937;
+  --background: #fafaf8;
+  --foreground: #1a2332;
+  --primary: #0a4d2e;
+  --primary-dark: #083d25;
+  --primary-light: #0f6b3f;
+  --secondary: #c9a227;
+  --secondary-light: #dbb84a;
+  --accent: #0ea5e9;
+  --accent-light: #38bdf8;
+  --gold: #c9a227;
+  --cream: #fafaf8;
+  --warm-white: #fafaf8;
+  --card: #ffffff;
+  --dark: #1a2332;
+  --muted: #64748b;
+  --border: rgba(10, 77, 46, 0.08);
+  --shadow-soft: 0 4px 24px -4px rgba(10, 77, 46, 0.08);
+  --shadow-premium: 0 12px 40px -12px rgba(10, 77, 46, 0.15);
 }
 
 @theme inline {
@@ -16,23 +26,57 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-gold: var(--gold);
   --color-cream: var(--cream);
+  --color-warm-white: var(--warm-white);
+  --color-card: var(--card);
   --color-dark: var(--dark);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-poppins);
+  --font-display: var(--font-poppins);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-poppins), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Premium typography */
+.text-balance {
+  text-wrap: balance;
+}
+
+.prose-narrow {
+  max-width: 65ch;
+}
+
+/* Focus states for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Ripple animation */
 @keyframes ripple {
   to {
     transform: scale(20);
@@ -44,7 +88,74 @@ body {
   animation: ripple 0.6s ease-out forwards;
 }
 
-::selection {
-  background-color: #0b5d2a;
+/* Solar ray animation */
+@keyframes solar-ray {
+  0%, 100% { opacity: 0.03; transform: rotate(0deg); }
+  50% { opacity: 0.06; transform: rotate(2deg); }
+}
+
+.animate-solar-ray {
+  animation: solar-ray 8s ease-in-out infinite;
+}
+
+/* Subtle float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Premium card */
+.card-premium {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-premium:hover {
+  box-shadow: var(--shadow-premium);
+  border-color: rgba(10, 77, 46, 0.12);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Section spacing */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--primary);
   color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
