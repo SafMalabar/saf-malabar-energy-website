@@ -15,7 +15,7 @@ export function FAQ({ items }: FAQProps) {
 
   return (
     <section id="faq" className="section-padding bg-white" aria-labelledby="faq-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="FAQ"
           title="Common Questions, Clear Answers"

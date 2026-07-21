@@ -30,7 +30,7 @@ export function Services({ items }: ServicesProps) {
 
   return (
     <section id="services" className="section-padding bg-white" aria-labelledby="services-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Our Services"
           title="End-to-End Solar Engineering Services"

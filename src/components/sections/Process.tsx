@@ -8,7 +8,7 @@ import { processSteps } from "@/content";
 export function Process() {
   return (
     <section id="process" className="section-padding bg-white" aria-labelledby="process-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Our Process"
           title="A Transparent Path from Consultation to Commissioning"

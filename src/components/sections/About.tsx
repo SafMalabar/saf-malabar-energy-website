@@ -23,7 +23,7 @@ const storyBlocks = [
 export function About() {
   return (
     <section id="about" className="section-padding bg-warm-white" aria-labelledby="about-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="About Us"
           title="Engineering Excellence Rooted in Kerala"

@@ -10,7 +10,7 @@ export function Trust() {
       className="relative border-y border-border bg-white py-12 lg:py-16"
       aria-label="Trust metrics"
     >
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <motion.div
           className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8 lg:gap-6"
           variants={staggerContainer}

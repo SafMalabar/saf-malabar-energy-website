@@ -32,16 +32,16 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled || mobileOpen
-          ? "glass border-b border-border shadow-sm"
-          : "bg-transparent"
+          ? "bg-primary/95 shadow-lg shadow-primary/20 backdrop-blur-md"
+          : "bg-primary"
       }`}
       role="banner"
     >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-8"
+        className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 py-3.5 lg:px-10"
         aria-label="Main navigation"
       >
-        <Logo />
+        <Logo light />
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-1 xl:flex" role="list">
@@ -55,8 +55,8 @@ export function Navbar() {
                   href={link.href}
                   className={`relative rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                     isActive
-                      ? "text-primary"
-                      : "text-dark/70 hover:text-primary"
+                      ? "text-secondary-light"
+                      : "text-white/80 hover:text-white"
                   }`}
                   aria-current={isActive ? "true" : undefined}
                 >
@@ -75,14 +75,14 @@ export function Navbar() {
         </ul>
 
         <div className="hidden xl:block">
-          <Button href="#contact" variant="primary">
+          <Button href="#contact" variant="secondary">
             Get Free Quote
           </Button>
         </div>
 
         <button
           type="button"
-          className="relative z-50 rounded-xl p-2.5 text-primary transition-colors hover:bg-primary/5 xl:hidden"
+          className="relative z-50 rounded-xl p-2.5 text-white transition-colors hover:bg-white/10 xl:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}

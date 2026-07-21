@@ -37,7 +37,7 @@ export function Contact({ companyData }: { companyData?: CompanyData }) {
 
   return (
     <section id="contact" className="section-padding bg-warm-white" aria-labelledby="contact-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Contact Us"
           title="Start Your Solar Engineering Assessment"

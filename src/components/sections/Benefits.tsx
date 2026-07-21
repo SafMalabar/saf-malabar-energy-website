@@ -9,7 +9,7 @@ import { benefits } from "@/content";
 export function Benefits() {
   return (
     <section id="benefits" className="section-padding bg-warm-white" aria-labelledby="benefits-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Solar Benefits"
           title="Measurable Returns on Your Investment"

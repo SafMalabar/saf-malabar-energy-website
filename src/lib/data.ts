@@ -10,12 +10,28 @@ const serviceIconMap: Record<string, string> = {
   "Industrial Solar": "Factory",
 };
 
+/**
+ * Runs a DB query but falls back to null when the database is unreachable
+ * or its tables don't exist (e.g. during build on a fresh deployment).
+ * The callers then serve the static content from `@/content`.
+ */
+async function safeQuery<T>(query: () => Promise<T>): Promise<T | null> {
+  try {
+    return await query();
+  } catch (error) {
+    console.warn("Database unavailable, using static content fallback:", error);
+    return null;
+  }
+}
+
 export async function getPublishedTestimonials() {
-  const items = await prisma.testimonial.findMany({
-    where: { published: true },
-    orderBy: { sortOrder: "asc" },
-  });
-  if (items.length === 0) return staticTestimonials;
+  const items = await safeQuery(() =>
+    prisma.testimonial.findMany({
+      where: { published: true },
+      orderBy: { sortOrder: "asc" },
+    })
+  );
+  if (!items || items.length === 0) return staticTestimonials;
   return items.map((t) => ({
     id: t.id,
     name: t.name,
@@ -28,11 +44,13 @@ export async function getPublishedTestimonials() {
 }
 
 export async function getPublishedProjects() {
-  const items = await prisma.project.findMany({
-    where: { published: true },
-    orderBy: { sortOrder: "asc" },
-  });
-  if (items.length === 0) {
+  const items = await safeQuery(() =>
+    prisma.project.findMany({
+      where: { published: true },
+      orderBy: { sortOrder: "asc" },
+    })
+  );
+  if (!items || items.length === 0) {
     return staticProjects.map((p) => ({
       id: p.id,
       title: p.title,
@@ -49,20 +67,24 @@ export async function getPublishedProjects() {
 }
 
 export async function getPublishedFaqs() {
-  const items = await prisma.faq.findMany({
-    where: { published: true },
-    orderBy: { sortOrder: "asc" },
-  });
-  if (items.length === 0) return staticFaqs;
+  const items = await safeQuery(() =>
+    prisma.faq.findMany({
+      where: { published: true },
+      orderBy: { sortOrder: "asc" },
+    })
+  );
+  if (!items || items.length === 0) return staticFaqs;
   return items.map((f) => ({ question: f.question, answer: f.answer }));
 }
 
 export async function getPublishedServices() {
-  const items = await prisma.service.findMany({
-    where: { published: true },
-    orderBy: { sortOrder: "asc" },
-  });
-  if (items.length === 0) {
+  const items = await safeQuery(() =>
+    prisma.service.findMany({
+      where: { published: true },
+      orderBy: { sortOrder: "asc" },
+    })
+  );
+  if (!items || items.length === 0) {
     return staticServices.map((s) => ({
       iconName: serviceIconMap[s.title] ?? "Sun",
       title: s.title,
@@ -81,9 +103,11 @@ export async function getPublishedServices() {
 }
 
 export async function getCompanySettings() {
-  const settings = await prisma.companySettings.findUnique({
-    where: { id: "default" },
-  });
+  const settings = await safeQuery(() =>
+    prisma.companySettings.findUnique({
+      where: { id: "default" },
+    })
+  );
   if (!settings) return company;
 
   return {

@@ -44,7 +44,7 @@ export function Testimonials({ items }: TestimonialsProps) {
       className="section-padding bg-warm-white"
       aria-labelledby="testimonials-heading"
     >
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Client Testimonials"
           title="Trusted by Homeowners and Businesses Across Kerala"

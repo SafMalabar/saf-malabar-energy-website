@@ -9,7 +9,7 @@ import { products } from "@/content";
 export function Products() {
   return (
     <section id="products" className="section-padding bg-warm-white" aria-labelledby="products-heading">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Products & Solutions"
           title="Solar Systems for Every Application"

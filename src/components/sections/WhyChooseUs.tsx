@@ -17,7 +17,7 @@ export function WhyChooseUs() {
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-accent/[0.03] blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="relative mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <SectionHeading
           label="Why Choose Us"
           title="The SAF Malabar Difference"

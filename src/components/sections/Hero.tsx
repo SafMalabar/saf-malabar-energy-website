@@ -42,7 +42,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-28 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:pb-28 lg:pt-32">
+      <div className="relative mx-auto grid w-full max-w-[1440px] items-center gap-12 px-5 pb-20 pt-28 lg:grid-cols-2 lg:gap-16 lg:px-10 lg:pb-28 lg:pt-32">
         {/* Left content */}
         <div className="order-2 lg:order-1">
           <motion.div

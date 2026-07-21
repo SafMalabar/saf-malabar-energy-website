@@ -8,7 +8,7 @@ import { fadeUp, viewportOnce } from "@/lib/animations";
 export function CTA() {
   return (
     <section className="section-padding bg-white" aria-label="Call to action">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <motion.div
           className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-primary-light px-8 py-16 text-center sm:px-16 lg:py-24"
           variants={fadeUp}

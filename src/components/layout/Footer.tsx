@@ -37,7 +37,7 @@ export function Footer() {
 
   return (
     <footer className="bg-primary text-white" role="contentinfo">
-      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+      <div className="mx-auto w-full max-w-[1440px] px-5 py-16 lg:px-10 lg:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4">
