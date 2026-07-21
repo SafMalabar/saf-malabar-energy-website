@@ -21,7 +21,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   outline:
     "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white",
   white:
-    "bg-white text-primary shadow-lg hover:bg-cream hover:shadow-xl",
+    "bg-white text-primary shadow-lg hover:bg-warm-white hover:shadow-xl",
 };
 
 export function Button({
@@ -52,6 +52,7 @@ export function Button({
         className={classes}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
+        onClick={onClick}
       >
         {children}
       </motion.a>

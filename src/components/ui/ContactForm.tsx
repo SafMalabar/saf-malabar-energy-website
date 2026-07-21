@@ -6,9 +6,9 @@ import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { contactForm } from "@/content";
 
 const inputClass =
-  "w-full rounded-xl border border-border bg-warm-white px-4 py-3 text-sm text-dark transition-colors placeholder:text-muted/60 focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20";
+  "w-full rounded-xl border border-border bg-warm-white px-4 py-3 text-sm text-dark transition-colors placeholder:text-muted/60 focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/15";
 
-const labelClass = "mb-1.5 block text-sm font-medium text-dark";
+const labelClass = "mb-1.5 block text-sm font-semibold text-dark";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -47,10 +47,12 @@ export function ContactForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="card-premium flex flex-col items-center justify-center px-8 py-16 text-center"
+        className="flex h-full flex-col items-center justify-center px-8 py-16 text-center"
         role="status"
       >
-        <CheckCircle className="mb-4 text-primary" size={48} aria-hidden="true" />
+        <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary/[0.08]">
+          <CheckCircle className="text-primary" size={32} aria-hidden="true" />
+        </div>
         <h3 className="text-xl font-bold text-dark">Thank You</h3>
         <p className="mt-2 max-w-sm text-sm text-muted">
           Your enquiry has been received. Our engineering team will contact you within 24 hours.
@@ -62,7 +64,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="card-premium space-y-5 p-6 sm:p-8"
+      className="space-y-5"
       aria-label="Contact enquiry form"
     >
       {error && (

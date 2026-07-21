@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Admin {
-  id           String   @id @default(cuid())
+  id           String   @id @default(cuid()) @map("_id")
   email        String   @unique
   passwordHash String
   name         String
@@ -26,7 +26,7 @@ enum EnquiryStatus {
 }
 
 model Enquiry {
-  id           String        @id @default(cuid())
+  id           String        @id @default(cuid()) @map("_id")
   name         String
   phone        String
   email        String?
@@ -43,7 +43,7 @@ model Enquiry {
 }
 
 model Testimonial {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   name      String
   location  String
   project   String
@@ -57,7 +57,7 @@ model Testimonial {
 }
 
 model Project {
-  id            String   @id @default(cuid())
+  id            String   @id @default(cuid()) @map("_id")
   title         String
   category      String
   location      String
@@ -73,7 +73,7 @@ model Project {
 }
 
 model Faq {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   question  String
   answer    String
   sortOrder Int      @default(0)
@@ -83,7 +83,7 @@ model Faq {
 }
 
 model Service {
-  id          String   @id @default(cuid())
+  id          String   @id @default(cuid()) @map("_id")
   title       String
   description String
   benefits    String
@@ -96,7 +96,7 @@ model Service {
 }
 
 model CompanySettings {
-  id                    String   @id @default("default")
+  id                    String   @id @default("default") @map("_id")
   name                  String
   tagline               String
   description           String
@@ -116,7 +116,7 @@ model CompanySettings {
 }
 
 model ActivityLog {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   action    String
   entity    String
   entityId  String?

@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { scaleIn, staggerContainer, viewportOnce } from "@/lib/animations";
+import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { getIcon } from "@/lib/icons";
 import { services as defaultServices } from "@/content";
 
@@ -30,61 +30,80 @@ export function Services({ items }: ServicesProps) {
 
   return (
     <section id="services" className="section-padding bg-white" aria-labelledby="services-heading">
-      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
-        <SectionHeading
-          label="Our Services"
-          title="End-to-End Solar Engineering Services"
-          description="From initial energy audit to lifetime maintenance—every stage handled by our in-house engineering and installation teams."
-        />
+      <div className="section-container">
+        <div className="mb-14 grid items-end gap-6 lg:mb-16 lg:grid-cols-[1fr_auto]">
+          <SectionHeading
+            label="Our Services"
+            title="End-to-End Solar Engineering Services"
+            description="From initial energy audit to lifetime maintenance—every stage handled by our in-house engineering and installation teams."
+            align="left"
+            className="mb-0 lg:mb-0"
+          />
+          <motion.a
+            href="#contact"
+            className="hidden items-center gap-2 self-end whitespace-nowrap rounded-full border border-primary/20 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white lg:inline-flex"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            Discuss Your Project
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </motion.a>
+        </div>
 
         <motion.div
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {servicesList.map((service) => {
+          {servicesList.map((service, index) => {
             const Icon = getIcon(service.iconName ?? "Sun");
             return (
-            <motion.article
-              key={service.title}
-              variants={scaleIn}
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="card-premium group relative flex flex-col overflow-hidden p-8"
-            >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-0 transition-opacity group-hover:opacity-100" />
-
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-light text-white shadow-md shadow-primary/20">
-                <Icon size={26} strokeWidth={1.5} aria-hidden="true" />
-              </div>
-
-              <h3 className="mb-3 text-lg font-bold text-dark">{service.title}</h3>
-              <p className="mb-5 text-sm leading-relaxed text-muted">{service.description}</p>
-
-              <ul className="mb-5 space-y-2" role="list">
-                {service.benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start gap-2 text-sm text-dark/80">
-                    <Check size={15} className="mt-0.5 shrink-0 text-secondary" aria-hidden="true" />
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-auto border-t border-border pt-4 text-xs text-muted">
-                <span className="font-semibold text-dark">Ideal for:</span> {service.idealFor}
-              </p>
-
-              <a
-                href="#contact"
-                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
+              <motion.article
+                key={service.title}
+                variants={fadeUp}
+                className="group relative flex flex-col bg-white p-8 transition-colors duration-300 hover:bg-warm-white lg:p-9"
               >
-                Learn More
-                <ArrowRight size={14} aria-hidden="true" />
-              </a>
-            </motion.article>
-          );
+                <div className="mb-6 flex items-start justify-between">
+                  <div className="flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-2xl bg-primary/[0.06] text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
+                    <Icon size={24} strokeWidth={1.6} aria-hidden="true" />
+                  </div>
+                  <span className="font-display text-sm font-bold text-dark/15 transition-colors group-hover:text-primary/25">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h3 className="mb-3 text-lg font-bold text-dark">{service.title}</h3>
+                <p className="mb-6 text-sm leading-relaxed text-muted">{service.description}</p>
+
+                <ul className="mb-6 space-y-2.5" role="list">
+                  {service.benefits.map((benefit) => (
+                    <li key={benefit} className="flex items-start gap-2.5 text-sm text-dark/75">
+                      <span className="mt-0.5 flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full bg-primary/[0.08]">
+                        <Check size={11} className="text-primary" strokeWidth={3} aria-hidden="true" />
+                      </span>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto flex items-center justify-between border-t border-border pt-5">
+                  <p className="pr-3 text-xs leading-snug text-muted">
+                    <span className="font-semibold text-dark">Ideal for:</span> {service.idealFor}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/20 text-primary transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                    aria-label={`Enquire about ${service.title}`}
+                  >
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                </div>
+              </motion.article>
+            );
           })}
         </motion.div>
       </div>

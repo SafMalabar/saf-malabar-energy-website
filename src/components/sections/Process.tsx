@@ -1,72 +1,97 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { scaleIn, staggerContainer, viewportOnce } from "@/lib/animations";
-import { processSteps } from "@/content";
+import { ArrowRight, PhoneCall } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { processSteps, company } from "@/content";
 
 export function Process() {
   return (
     <section id="process" className="section-padding bg-white" aria-labelledby="process-heading">
-      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
-        <SectionHeading
-          label="Our Process"
-          title="A Transparent Path from Consultation to Commissioning"
-          description="Six clearly defined stages. No surprises, no hidden steps—just professional engineering from start to finish."
-        />
+      <div className="section-container">
+        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
+          {/* Sticky intro column */}
+          <motion.div
+            className="lg:sticky lg:top-36 lg:self-start"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            <span className="eyebrow mb-4 text-secondary">
+              <span className="h-px w-7 bg-current opacity-70" aria-hidden="true" />
+              Our Process
+            </span>
+            <h2
+              id="process-heading"
+              className="text-balance text-3xl font-extrabold leading-[1.12] tracking-tight text-dark sm:text-4xl lg:text-[2.75rem]"
+            >
+              A Transparent Path from Consultation to Commissioning
+            </h2>
+            <p className="mt-5 text-base leading-[1.75] text-muted sm:text-lg">
+              Six clearly defined stages. No surprises, no hidden steps—just professional
+              engineering from start to finish.
+            </p>
 
-        <motion.div
-          className="relative mx-auto max-w-4xl"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-        >
-          {/* Animated progress line */}
-          <div className="absolute left-7 top-0 hidden h-full w-0.5 md:left-1/2 md:block md:-translate-x-px" aria-hidden="true">
-            <div className="h-full w-full bg-border" />
-            <motion.div
-              className="absolute left-0 top-0 w-full bg-gradient-to-b from-primary via-secondary to-accent"
-              initial={{ height: "0%" }}
-              whileInView={{ height: "100%" }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Button href="#contact">
+                Start with Step One
+                <ArrowRight size={16} aria-hidden="true" />
+              </Button>
+            </div>
+
+            <a
+              href={`tel:${company.phones[0].replace(/\s/g, "")}`}
+              className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-border bg-warm-white px-5 py-4 transition-colors hover:border-primary/25"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.07] text-primary">
+                <PhoneCall size={17} aria-hidden="true" />
+              </span>
+              <span>
+                <span className="block text-xs text-muted">Prefer to talk it through?</span>
+                <span className="block text-sm font-bold text-dark">{company.phones[0]}</span>
+              </span>
+            </a>
+          </motion.div>
+
+          {/* Steps rail */}
+          <motion.ol
+            className="relative"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            <div
+              className="absolute bottom-8 left-[1.6875rem] top-8 w-px bg-gradient-to-b from-primary/30 via-border to-primary/30"
+              aria-hidden="true"
             />
-          </div>
 
-          {processSteps.map((step, index) => {
-            const isLeft = index % 2 === 0;
-
-            return (
-              <motion.div
+            {processSteps.map((step, index) => (
+              <motion.li
                 key={step.title}
-                variants={scaleIn}
-                className={`relative mb-10 flex items-start gap-6 md:mb-14 ${
-                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                variants={fadeUp}
+                className="group relative flex gap-6 pb-10 last:pb-0 sm:gap-8"
               >
-                {/* Icon node */}
-                <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/25 ring-4 ring-white md:absolute md:left-1/2 md:-translate-x-1/2">
-                  <step.icon size={24} strokeWidth={1.5} aria-hidden="true" />
+                <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-border bg-white text-primary shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
+                  <step.icon size={23} strokeWidth={1.6} aria-hidden="true" />
                 </div>
 
-                {/* Content card */}
-                <article
-                  className={`flex-1 rounded-2xl border border-border bg-warm-white p-6 shadow-sm md:w-[calc(50%-3.5rem)] ${
-                    isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
-                  }`}
-                >
-                  <span className="mb-1 block text-xs font-bold uppercase tracking-[0.2em] text-secondary">
-                    Step {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mb-2 text-lg font-bold text-dark">{step.title}</h3>
-                  <p className="mb-3 text-sm font-medium text-dark/80">{step.description}</p>
+                <div className="flex-1 rounded-2xl border border-border bg-warm-white p-6 transition-shadow duration-300 group-hover:shadow-md group-hover:shadow-primary/[0.07] sm:p-7">
+                  <div className="mb-2 flex items-baseline justify-between gap-4">
+                    <h3 className="text-lg font-bold text-dark">{step.title}</h3>
+                    <span className="font-display text-sm font-extrabold text-primary/25">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <p className="mb-2.5 text-sm font-medium text-dark/75">{step.description}</p>
                   <p className="text-sm leading-relaxed text-muted">{step.detail}</p>
-                </article>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
+        </div>
       </div>
     </section>
   );

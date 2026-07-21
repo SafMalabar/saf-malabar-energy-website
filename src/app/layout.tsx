@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { images } from "@/config/images";
 import { company } from "@/content";
 import { StructuredData } from "@/components/seo/StructuredData";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -86,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full scroll-smooth antialiased`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable} h-full scroll-smooth antialiased`}>
       <head>
         <StructuredData />
       </head>

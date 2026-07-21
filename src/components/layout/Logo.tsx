@@ -25,7 +25,7 @@ export function Logo({ variant = "compact", light = false, className = "" }: Log
         <Sun size={variant === "full" ? 24 : 20} aria-hidden="true" />
       </div>
       <div className={variant === "compact" ? "hidden sm:block" : ""}>
-        <span className={`block text-sm font-bold leading-tight sm:text-base ${titleColor}`}>
+        <span className={`block text-sm font-extrabold leading-tight tracking-tight sm:text-base ${titleColor}`}>
           SAF Malabar
         </span>
         <span className={`block text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${subtitleColor}`}>

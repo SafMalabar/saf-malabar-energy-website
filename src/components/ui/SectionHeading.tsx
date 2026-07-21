@@ -9,6 +9,7 @@ interface SectionHeadingProps {
   description?: string;
   align?: "left" | "center";
   light?: boolean;
+  className?: string;
 }
 
 export function SectionHeading({
@@ -17,12 +18,13 @@ export function SectionHeading({
   description,
   align = "center",
   light = false,
+  className = "",
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
 
   return (
     <motion.header
-      className={`mb-16 max-w-3xl ${alignClass}`}
+      className={`mb-14 max-w-3xl lg:mb-16 ${alignClass} ${className}`}
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -30,19 +32,19 @@ export function SectionHeading({
     >
       {label && (
         <span
-          className={`mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] ${
+          className={`eyebrow mb-4 ${
             light ? "text-secondary-light" : "text-secondary"
           }`}
         >
-          <span className="h-px w-6 bg-current opacity-60" aria-hidden="true" />
+          <span className="h-px w-7 bg-current opacity-70" aria-hidden="true" />
           {label}
           {align === "center" && (
-            <span className="h-px w-6 bg-current opacity-60" aria-hidden="true" />
+            <span className="h-px w-7 bg-current opacity-70" aria-hidden="true" />
           )}
         </span>
       )}
       <h2
-        className={`text-balance text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.75rem] ${
+        className={`text-balance text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem] ${
           light ? "text-white" : "text-dark"
         }`}
       >
@@ -52,7 +54,7 @@ export function SectionHeading({
         <p
           className={`prose-narrow mt-5 text-base leading-[1.75] sm:text-lg ${
             align === "center" ? "mx-auto" : ""
-          } ${light ? "text-white/80" : "text-muted"}`}
+          } ${light ? "text-white/75" : "text-muted"}`}
         >
           {description}
         </p>

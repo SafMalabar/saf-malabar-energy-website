@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 import { footerLinks, company } from "@/content";
 
@@ -36,13 +36,35 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-primary text-white" role="contentinfo">
-      <div className="mx-auto w-full max-w-[1440px] px-5 py-16 lg:px-10 lg:py-20">
+    <footer className="relative overflow-hidden bg-primary-dark text-white" role="contentinfo">
+      <div className="bg-grid-light pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-40 top-0 h-80 w-80 rounded-full bg-primary-light/15 blur-3xl" aria-hidden="true" />
+
+      <div className="section-container relative py-16 lg:py-20">
+        {/* Top CTA strip */}
+        <div className="mb-14 flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.04] p-7 sm:flex-row sm:items-center sm:p-8">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary-light">
+              Ready to go solar?
+            </p>
+            <p className="mt-1.5 text-lg font-bold text-white sm:text-xl">
+              Get a free engineering assessment within 24 hours.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-secondary-light hover:text-white"
+          >
+            Request Assessment
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        </div>
+
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4">
             <Logo light className="rounded-xl px-1 py-1" />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
               {company.description}
             </p>
             <div className="mt-6 flex items-center gap-3">
@@ -53,7 +75,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow us on ${label}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 transition-all hover:bg-secondary hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-white/70 transition-all hover:border-secondary hover:bg-secondary hover:text-white"
                 >
                   {icon}
                 </a>
@@ -63,7 +85,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-secondary-light">
               Quick Links
             </h3>
             <ul className="space-y-3" role="list">
@@ -71,7 +93,7 @@ export function Footer() {
                 <li key={link.href + link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
+                    className="text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -82,7 +104,7 @@ export function Footer() {
 
           {/* Services */}
           <div className="lg:col-span-2">
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-secondary-light">
               Services
             </h3>
             <ul className="space-y-3" role="list">
@@ -90,7 +112,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
+                    className="text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -101,7 +123,7 @@ export function Footer() {
 
           {/* Contact & Hours */}
           <div className="lg:col-span-4">
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-secondary-light">
               Contact
             </h3>
             <ul className="space-y-4" role="list">
@@ -109,9 +131,9 @@ export function Footer() {
                 <li key={phone}>
                   <a
                     href={`tel:${phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+                    className="flex items-center gap-3 text-sm text-white/60 transition-colors hover:text-white"
                   >
-                    <Phone size={15} className="shrink-0 text-secondary" aria-hidden="true" />
+                    <Phone size={15} className="shrink-0 text-secondary-light" aria-hidden="true" />
                     {phone}
                   </a>
                 </li>
@@ -119,18 +141,18 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${company.email}`}
-                  className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+                  className="flex items-center gap-3 text-sm text-white/60 transition-colors hover:text-white"
                 >
-                  <Mail size={15} className="shrink-0 text-secondary" aria-hidden="true" />
+                  <Mail size={15} className="shrink-0 text-secondary-light" aria-hidden="true" />
                   {company.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-white/70">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-secondary" aria-hidden="true" />
+              <li className="flex items-start gap-3 text-sm text-white/60">
+                <MapPin size={15} className="mt-0.5 shrink-0 text-secondary-light" aria-hidden="true" />
                 {company.location}
               </li>
-              <li className="flex items-start gap-3 text-sm text-white/70">
-                <Clock size={15} className="mt-0.5 shrink-0 text-secondary" aria-hidden="true" />
+              <li className="flex items-start gap-3 text-sm text-white/60">
+                <Clock size={15} className="mt-0.5 shrink-0 text-secondary-light" aria-hidden="true" />
                 <span>
                   {company.workingHours.weekdays}
                   <br />
@@ -143,7 +165,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/50">
+          <p className="text-sm text-white/40">
             &copy; {year} {company.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
@@ -151,7 +173,7 @@ export function Footer() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm text-white/50 transition-colors hover:text-white/80"
+                className="text-sm text-white/40 transition-colors hover:text-white/80"
               >
                 {link.label}
               </a>
@@ -162,10 +184,10 @@ export function Footer() {
         {/* Legal sections */}
         <div className="mt-16 space-y-8 border-t border-white/10 pt-12">
           <section id="privacy" aria-labelledby="privacy-heading">
-            <h3 id="privacy-heading" className="mb-3 text-sm font-bold uppercase tracking-wider text-secondary">
+            <h3 id="privacy-heading" className="mb-3 text-sm font-bold uppercase tracking-wider text-secondary-light">
               Privacy Policy
             </h3>
-            <p className="max-w-3xl text-xs leading-relaxed text-white/50">
+            <p className="max-w-3xl text-xs leading-relaxed text-white/40">
               {company.name} respects your privacy. Information submitted through our contact form
               is used solely to respond to your enquiry and provide solar engineering services.
               We do not sell or share your personal data with third parties. Data is stored securely
@@ -173,10 +195,10 @@ export function Footer() {
             </p>
           </section>
           <section id="terms" aria-labelledby="terms-heading">
-            <h3 id="terms-heading" className="mb-3 text-sm font-bold uppercase tracking-wider text-secondary">
+            <h3 id="terms-heading" className="mb-3 text-sm font-bold uppercase tracking-wider text-secondary-light">
               Terms of Service
             </h3>
-            <p className="max-w-3xl text-xs leading-relaxed text-white/50">
+            <p className="max-w-3xl text-xs leading-relaxed text-white/40">
               All solar system proposals, quotations, and installations are subject to site
               assessment, regulatory approvals, and signed agreement terms. Performance estimates
               are based on industry-standard simulations and may vary with weather, shading, and
